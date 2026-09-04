@@ -1,0 +1,76 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - family-names: Römer
+    given-names: Johann
+    affiliation: "MOR Research Collective"
+title: "kaskaden-sandbox"
+version: "0.1.0"
+date-released: "2026-09-04"
+url: "https://github.com/GenesisAeon/kaskaden-sandbox"
+repository-code: "https://github.com/GenesisAeon/kaskaden-sandbox"
+license: MIT
+abstract: >-
+  Interactive evidence-graph sandbox for the published Wunderling et al.
+  tipping-element network (GIS / WAIS / AMOC / Amazon). Companion UI to
+  cascading-tipping-utac (GenesisAeon P87). Deliberately no UTAC/CREP/AFET
+  overlay; no Monte-Carlo engine; unclear-sign edges left unmarked as such.
+keywords:
+  - GenesisAeon
+  - P87
+  - climate
+  - tipping-points
+  - cascading-tipping-points
+  - evidence-graph
+  - open-science
+references:
+  - type: software
+    title: "cascading-tipping-utac"
+    repository-code: "https://github.com/GenesisAeon/cascading-tipping-utac"
+    version: "1.0.1"
+  - type: article
+    title: "Interacting tipping elements increase risk of climate domino effects under global warming"
+    authors:
+      - name: "Wunderling, N."
+      - name: "Donges, J.F."
+      - name: "Kurths, J."
+      - name: "Winkelmann, R."
+    year: 2021
+    journal: "Earth System Dynamics"
+    volume: 12
+    start: 601
+    end: 619
+    doi: "10.5194/esd-12-601-2021"
+  - type: article
+    title: "Global warming overshoots increase risks of climate tipping cascades in a network model"
+    authors:
+      - name: "Wunderling, N."
+      - name: "Winkelmann, R."
+      - name: "Rockstrom, J."
+    year: 2022
+    journal: "Nature Climate Change"
+    doi: "10.1038/s41558-022-01545-9"
+  - type: article
+    title: "Climate tipping point interactions and cascades: a review"
+    authors:
+      - name: "Wunderling, N."
+    year: 2024
+    journal: "Earth System Dynamics"
+    volume: 15
+    start: 41
+    end: 74
+    doi: "10.5194/esd-15-41-2024"
+  - type: article
+    title: "Cascading regime shifts within and across scales"
+    authors:
+      - name: "Rocha, J.C."
+      - name: "Peterson, G."
+      - name: "Bodin, O."
+      - name: "Levin, S."
+    year: 2018
+    journal: "Science"
+    volume: 362
+    start: 1379
+    end: 1383
+    doi: "10.1126/science.aat7850"
