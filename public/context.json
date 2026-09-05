@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "generated": "2026-09-05",
   "app": {
     "id": "kaskaden-sandbox",
@@ -31,6 +31,22 @@
     { "source": "west_antarctic_ice_sheet", "target": "amoc", "reason": "Competing processes (bipolar ocean seesaw, salinity anomalies, Drake Passage effects); paper states net sign is unclear." },
     { "source": "amoc", "target": "amazon", "reason": "AMOC weakening shifts the ITCZ; paper states the regional precipitation effect is ambiguous." }
   ],
+  "tipping": {
+    "kind": "graph_edge",
+    "value": 1.0,
+    "unit": "dimensionless coupling strength (d)",
+    "derived_from": "Wunderling et al. 2021/2022, d=1.0 is the maximum documented pairwise interaction strength in the 4-element network",
+    "defined": true
+  },
+  "regen": {
+    "kind": "undefined",
+    "value": null,
+    "unit": null,
+    "derived_from": "This is a documented coupling-strength network, not a per-node ODE -- no relaxation/recovery rate is defined in the source literature.",
+    "defined": false
+  },
+  "comparable": false,
+  "formula_ref": "cascading-tipping-utac network.py: coupling-strength ranges between 4 tipping elements, no shared ODE",
   "framework_overlay": { "used": false, "terms": [] },
   "honesty_checks": [
     { "name": "network.test.ts source-drift guard", "always_returns": "fails the test suite", "meaning": "Greps the cited domain source files for UTAC/CREP/AFET/Γ to structurally guarantee no framework-overlay creep into this package's science." }
