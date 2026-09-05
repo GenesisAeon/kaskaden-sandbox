@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "generated": "2026-09-05",
+  "app": {
+    "id": "kaskaden-sandbox",
+    "title": "Kaskaden-Sandbox",
+    "kind": "framework",
+    "live_url": "https://kaskaden-sandbox.vercel.app",
+    "repo_url": "https://github.com/GenesisAeon/kaskaden-sandbox",
+    "llms_txt_url": "https://kaskaden-sandbox.vercel.app/llms.txt"
+  },
+  "source_package": {
+    "name": "cascading-tipping-utac",
+    "package_id": 87,
+    "repo_url": "https://github.com/GenesisAeon/cascading-tipping-utac",
+    "ported_note": "1:1 port of src/cascading_tipping_utac/constants.py, network.py (source version 1.0.1)."
+  },
+  "primary_sources": [
+    { "authors": "Wunderling, N., Donges, J.F., Kurths, J., Winkelmann, R.", "year": 2021, "title": "Interacting tipping elements increase risk of climate domino effects under global warming", "journal": "Earth System Dynamics", "doi": "10.5194/esd-12-601-2021" },
+    { "authors": "Wunderling, N., Winkelmann, R., Rockstrom, J. et al.", "year": 2022, "title": "Global warming overshoots increase risks of climate tipping cascades in a network model", "journal": "Nature Climate Change", "doi": "10.1038/s41558-022-01545-9" },
+    { "authors": "Wunderling, N. et al.", "year": 2024, "title": "Climate tipping point interactions and cascades: a review", "journal": "Earth System Dynamics", "doi": "10.5194/esd-15-41-2024" },
+    { "authors": "Rocha, J.C., Peterson, G., Bodin, O., Levin, S.", "year": 2018, "title": "Cascading regime shifts within and across scales", "journal": "Science", "doi": "10.1126/science.aat7850" }
+  ],
+  "verified_quantities": [
+    { "name": "AMOC_CRITICAL_TEMP_REDUCTION_PCT_AT_MAX_COUPLING", "value": 55.0, "unit": "percent", "source": "Wunderling et al. 2021, max documented coupling d=1.0" },
+    { "name": "WAIS_CRITICAL_TEMP_REDUCTION_PCT_AT_MAX_COUPLING", "value": 40.0, "unit": "percent", "source": "Wunderling et al. 2021" },
+    { "name": "OVERSHOOT_CASCADE_RISK_INCREASE_PCT_MAX", "value": 72.0, "unit": "percent", "source": "Wunderling et al. 2022" }
+  ],
+  "elements": ["greenland_ice_sheet", "west_antarctic_ice_sheet", "amoc", "amazon"],
+  "couplings_with_unknown_sign": [
+    { "source": "west_antarctic_ice_sheet", "target": "amoc", "reason": "Competing processes (bipolar ocean seesaw, salinity anomalies, Drake Passage effects); paper states net sign is unclear." },
+    { "source": "amoc", "target": "amazon", "reason": "AMOC weakening shifts the ITCZ; paper states the regional precipitation effect is ambiguous." }
+  ],
+  "framework_overlay": { "used": false, "terms": [] },
+  "honesty_checks": [
+    { "name": "network.test.ts source-drift guard", "always_returns": "fails the test suite", "meaning": "Greps the cited domain source files for UTAC/CREP/AFET/Γ to structurally guarantee no framework-overlay creep into this package's science." }
+  ],
+  "cross_app_relations": [
+    { "app_id": "amoc-kipppunkt", "relation": "shares_modeled_element", "detail": "AMOC is one of the 4 elements in this network and has its own dedicated sandbox." },
+    { "app_id": "amazon-kipppunkt", "relation": "shares_modeled_element", "detail": "Amazon is one of the 4 elements in this network and has its own dedicated sandbox." }
+  ],
+  "disclaimer": "Reine Zitat-Wissenschaft — kein Framework-Overlay."
+}

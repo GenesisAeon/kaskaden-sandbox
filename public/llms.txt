@@ -1,0 +1,21 @@
+# Kaskaden-Sandbox
+
+> Evidence-Graph des Wunderling-Netzwerks: vier Kipppunkte (Grönland-Eisschild, Westantarktis-Eisschild, AMOC, Amazonas), sieben dokumentierte gerichtete Kopplungen — davon zwei mit ausdrücklich unklarem Vorzeichen (WAIS→AMOC, AMOC→Amazon), nicht geraten. Portiert 1:1 aus cascading-tipping-utac (P87).
+
+Bei maximaler dokumentierter Kopplungsstärke: AMOC ~55 % / WAIS ~40 % kritische-Temperatur-Reduktion (Wunderling et al. 2021); Overshoot erhöht das Cascade-Risiko um bis zu ~72 % (Wunderling et al. 2022). Diese App testet sich selbst gegen Framework-Overlay-Drift: network.test.ts durchsucht die zitierten Domain-Quellen nach UTAC/CREP/AFET/Γ und schlägt fehl, falls diese dort auftauchen.
+
+## Quellen
+- Wunderling et al. (2021), Earth System Dynamics, DOI 10.5194/esd-12-601-2021
+- Wunderling et al. (2022), Nature Climate Change, DOI 10.1038/s41558-022-01545-9
+- Wunderling et al. (2024, Review), Earth System Dynamics, DOI 10.5194/esd-15-41-2024
+- Rocha et al. (2018), Science, DOI 10.1126/science.aat7850
+
+## Maschinenlesbar
+- [context.json](/context.json)
+- Schema: https://github.com/GenesisAeon/apps-hub/blob/main/docs/ai-context-schema.md
+
+## Ökosystem
+- Teil der GenesisAeon Apps-Hub-Reihe: https://github.com/GenesisAeon/apps-hub
+- AMOC-Element auch als eigene Sandbox: https://amoc-kipppunkt.vercel.app
+- Amazonas-Element auch als eigene Sandbox: https://amazon-kipppunkt.vercel.app
+- Zugehöriges Paket im Klimakatalog: https://klimakatalog.vercel.app/p/cascading-tipping-utac
