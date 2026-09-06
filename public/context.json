@@ -36,14 +36,16 @@
     "value": 1.0,
     "unit": "dimensionless coupling strength (d)",
     "derived_from": "Wunderling et al. 2021/2022, d=1.0 is the maximum documented pairwise interaction strength in the 4-element network",
-    "defined": true
+    "defined": true,
+    "origin": "literature"
   },
   "regen": {
     "kind": "undefined",
     "value": null,
     "unit": null,
     "derived_from": "This is a documented coupling-strength network, not a per-node ODE -- no relaxation/recovery rate is defined in the source literature.",
-    "defined": false
+    "defined": false,
+    "origin": "undefined"
   },
   "comparable": false,
   "formula_ref": "cascading-tipping-utac network.py: coupling-strength ranges between 4 tipping elements, no shared ODE",
