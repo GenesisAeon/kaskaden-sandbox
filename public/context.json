@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.1.0",
-  "generated": "2026-09-05",
+  "schema_version": "1.2.0",
+  "generated": "2026-09-06",
   "app": {
     "id": "kaskaden-sandbox",
     "title": "Kaskaden-Sandbox",
@@ -44,6 +44,14 @@
     "value": null,
     "unit": null,
     "derived_from": "This is a documented coupling-strength network, not a per-node ODE -- no relaxation/recovery rate is defined in the source literature.",
+    "defined": false,
+    "origin": "undefined"
+  },
+  "entropy_bg": {
+    "kind": "undefined",
+    "value": null,
+    "unit": null,
+    "derived_from": "No background energetic/radiative quantity is defined for this coupling-strength network in the source literature -- left undefined rather than guessed.",
     "defined": false,
     "origin": "undefined"
   },

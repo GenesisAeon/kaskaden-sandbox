@@ -6,7 +6,7 @@ authors:
     given-names: Johann
     affiliation: "MOR Research Collective"
 title: "kaskaden-sandbox"
-version: "0.3.1"
+version: "0.4.0"
 date-released: "2026-09-04"
 url: "https://github.com/GenesisAeon/kaskaden-sandbox"
 repository-code: "https://github.com/GenesisAeon/kaskaden-sandbox"
