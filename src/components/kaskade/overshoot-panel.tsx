@@ -2,6 +2,7 @@ import { OVERSHOOT_CASCADE_RISK_INCREASE_PCT_MAX } from "@/lib/kaskade/constants
 import { cascadeRiskIndex } from "@/lib/kaskade/scale";
 import { Switch } from "@/components/ui/switch";
 import { cn, fmtDe } from "@/lib/utils";
+import { useLocale } from "@/lib/i18n/locale";
 
 export function OvershootPanel({
   overshoot,
@@ -10,6 +11,7 @@ export function OvershootPanel({
   overshoot: boolean;
   onChange: (on: boolean) => void;
 }) {
+  const { t } = useLocale();
   const idx = cascadeRiskIndex();
 
   return (
@@ -17,18 +19,16 @@ export function OvershootPanel({
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="text-2xs font-medium uppercase tracking-[0.14em] text-subtle">
-            Overshoot-Szenario
+            {t.overshootLabel}
           </p>
-          <h2 className="mt-1 font-heading text-xl leading-snug tracking-tight">
-            Temporäres Überschießen
-          </h2>
+          <h2 className="mt-1 font-heading text-xl leading-snug tracking-tight">{t.overshootTitle}</h2>
         </div>
         <div className="flex items-center gap-3 pt-1">
-          <span className="text-xs text-muted">{overshoot ? "an" : "aus"}</span>
+          <span className="text-xs text-muted">{overshoot ? t.on : t.off}</span>
           <Switch
             checked={overshoot}
             onCheckedChange={onChange}
-            aria-label="Overshoot-Szenario"
+            aria-label={t.overshootAria}
           />
         </div>
       </div>
@@ -40,13 +40,13 @@ export function OvershootPanel({
         )}
       >
         <IndexCard
-          label="Ohne Overshoot"
+          label={t.withoutOvershoot}
           value={idx.base}
-          hint="relativer Index"
+          hint={t.relativeIndex}
           active={!overshoot}
         />
         <IndexCard
-          label="Mit Overshoot"
+          label={t.withOvershoot}
           value={idx.withOvershoot}
           hint={`+${fmtDe(idx.increasePct, 0)} %`}
           active={overshoot}
@@ -54,14 +54,7 @@ export function OvershootPanel({
         />
       </div>
 
-      <p className="mt-4 text-sm leading-relaxed text-muted">
-        Wunderling et al. 2022: temporäre Temperatur-Overshoots können das
-        Cascade-Risiko um bis zu {fmtDe(OVERSHOOT_CASCADE_RISK_INCREASE_PCT_MAX, 0)}{" "}
-        % gegenüber Szenarien ohne Überschießen erhöhen — auch wenn die
-        langfristige Gleichgewichtstemperatur im Paris-Bereich bleibt. Der
-        Index 100 / {fmtDe(idx.withOvershoot, 0)} skaliert nur diesen
-        dokumentierten Zuschlag. Keine Monte-Carlo-Engine.
-      </p>
+      <p className="mt-4 text-sm leading-relaxed text-muted">{t.overshootBody(fmtDe(OVERSHOOT_CASCADE_RISK_INCREASE_PCT_MAX, 0), fmtDe(idx.withOvershoot, 0))}</p>
     </section>
   );
 }

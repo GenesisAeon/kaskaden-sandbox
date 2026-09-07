@@ -6,12 +6,7 @@ import { criticalTempReductionPct, maxReduction } from "@/lib/kaskade/scale";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { fmtDe } from "@/lib/utils";
-
-const PRESETS = [
-  { d: 0, label: "Isoliert" },
-  { d: 0.5, label: "d = 0,5" },
-  { d: 1, label: "Max. Kopplung" },
-] as const;
+import { useLocale } from "@/lib/i18n/locale";
 
 export function CouplingPanel({
   couplingD,
@@ -20,6 +15,12 @@ export function CouplingPanel({
   couplingD: number;
   onChange: (d: number) => void;
 }) {
+  const { t } = useLocale();
+  const PRESETS = [
+    { d: 0, label: t.presetIsolated },
+    { d: 0.5, label: t.presetHalf },
+    { d: 1, label: t.presetMax },
+  ] as const;
   const amoc = criticalTempReductionPct("amoc", couplingD);
   const wais = criticalTempReductionPct("wais", couplingD);
 
@@ -28,7 +29,7 @@ export function CouplingPanel({
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <p className="text-2xs font-medium uppercase tracking-[0.14em] text-subtle">
-            Kopplungsstärke d
+            {t.couplingStrength}
           </p>
           <p className="mt-1 font-mono text-3xl leading-none tabular-nums">
             {fmtDe(couplingD, 2)}
@@ -57,11 +58,11 @@ export function CouplingPanel({
         step={0.01}
         value={[couplingD]}
         onValueChange={(v) => onChange(v[0] ?? couplingD)}
-        aria-label="Kopplungsstärke d"
+        aria-label={t.couplingAria}
       />
       <div className="flex justify-between gap-4 font-mono text-2xs tabular-nums text-subtle">
-        <span>0 isoliert</span>
-        <span className="text-right">1 max. dokumentiert</span>
+        <span>{t.scaleIsolated}</span>
+        <span className="text-right">{t.scaleMax}</span>
       </div>
 
       <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -69,23 +70,16 @@ export function CouplingPanel({
           label="AMOC"
           value={amoc}
           max={maxReduction("amoc")}
-          caption="kritische Temperatur"
+          caption={t.criticalTemp}
         />
         <ReductionMeter
           label="WAIS"
           value={wais}
           max={maxReduction("wais")}
-          caption="kritische Temperatur"
+          caption={t.criticalTemp}
         />
       </div>
-      <p className="mt-3 text-xs leading-relaxed text-muted">
-        Lineare Skala der dokumentierten Befunde (Wunderling et al. 2021). Bei
-        maximaler Kopplung (d = 1) sinkt die effektive Kippschwelle der AMOC um
-        rund {fmtDe(AMOC_CRITICAL_TEMP_REDUCTION_PCT_AT_MAX_COUPLING, 0)} % und
-        die des westantarktischen Eisschilds um rund{" "}
-        {fmtDe(WAIS_CRITICAL_TEMP_REDUCTION_PCT_AT_MAX_COUPLING, 0)} % gegenüber
-        der isolierten Betrachtung. Keine eigene Simulation.
-      </p>
+      <p className="mt-3 text-xs leading-relaxed text-muted">{t.couplingBody(fmtDe(AMOC_CRITICAL_TEMP_REDUCTION_PCT_AT_MAX_COUPLING, 0), fmtDe(WAIS_CRITICAL_TEMP_REDUCTION_PCT_AT_MAX_COUPLING, 0))}</p>
     </section>
   );
 }
@@ -101,6 +95,7 @@ function ReductionMeter({
   max: number;
   caption: string;
 }) {
+  const { t } = useLocale();
   const pct = max === 0 ? 0 : (value / max) * 100;
   return (
     <div className="rounded-lg bg-elevated p-3">
@@ -120,7 +115,7 @@ function ReductionMeter({
         />
       </div>
       <p className="mt-2 font-mono text-2xs tabular-nums text-subtle">
-        max. {fmtDe(max, 0)} % bei d = 1
+        {t.maxAtD1(fmtDe(max, 0))}
       </p>
     </div>
   );
